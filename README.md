@@ -1,5 +1,9 @@
 # Projet Gestion de Stock - Backend (Microservices)
 
+## Video de demonstration
+
+[Voir la video J2EE](docs/video/video-j2ee.mp4)
+
 Ce dépôt contient un système de gestion de stock et approvisionnement basé sur une architecture microservices, prêt à être importé et exécuté dans IntelliJ IDEA.
 
 ## Modules

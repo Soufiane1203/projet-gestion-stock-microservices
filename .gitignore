@@ -1,0 +1,29 @@
+# Maven and Java build outputs
+**/target/
+
+# Frontend dependencies and builds
+frontend/node_modules/
+frontend/dist/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.iml
+
+# Logs and runtime files
+logs/
+**/logs/
+*.log
+hs_err_pid*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment and secrets
+.env
+.env.*
+
+# Temporary files
+*.tmp
+*.temp

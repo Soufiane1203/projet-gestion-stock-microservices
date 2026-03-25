@@ -1,0 +1,78 @@
+.container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.access-mode {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.access-mode mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.access-mode.admin {
+  background-color: #e1f5fe;
+  color: #0277bd;
+}
+
+.access-mode.readonly {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.no-alerts {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
+
+.no-alerts mat-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  color: #4caf50;
+}
+
+.alert-item {
+  border-bottom: 1px solid #eee;
+}
+
+.alert-item:last-child {
+  border-bottom: none;
+}
+
+.read-only-card mat-card-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.read-only-card mat-icon {
+  color: #ff9800;
+}

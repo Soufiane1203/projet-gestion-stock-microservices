@@ -1,0 +1,69 @@
+server:
+  port: 8083
+  error:
+    include-message: always
+    include-stacktrace: always
+
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: dev
+  config:
+    import: optional:configserver:http://localhost:8888
+  # Configuration PostgreSQL (compatible DBeaver)
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  file:
+    name: logs/order-service.log
+  level:
+    root: INFO
+    com.monprojet.order: DEBUG
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      defaultCircuit:
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+  retry:
+    instances:
+      defaultRetry:
+        maxAttempts: 3
+        waitDuration: 500ms
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  # Configuration PostgreSQL en production (mêmes paramètres de démo)
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+

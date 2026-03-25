@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Modifier' : 'Ajouter' }} un produit</h2>
+<mat-dialog-content>
+  <form [formGroup]="productForm">
+    <mat-form-field class="full-width">
+      <mat-label>SKU</mat-label>
+      <input matInput formControlName="sku" required>
+      <mat-error *ngIf="productForm.get('sku')?.hasError('required')">
+        Le SKU est requis
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="name" required>
+      <mat-error *ngIf="productForm.get('name')?.hasError('required')">
+        Le nom est requis
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Prix</mat-label>
+      <input matInput type="number" formControlName="price" required>
+      <mat-error *ngIf="productForm.get('price')?.hasError('required')">
+        Le prix est requis
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Seuil Critique</mat-label>
+      <input matInput type="number" formControlName="criticalThreshold" required>
+      <mat-error *ngIf="productForm.get('criticalThreshold')?.hasError('required')">
+        Le seuil critique est requis
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Annuler</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="productForm.invalid">
+    {{ isEdit ? 'Modifier' : 'Créer' }}
+  </button>
+</mat-dialog-actions>

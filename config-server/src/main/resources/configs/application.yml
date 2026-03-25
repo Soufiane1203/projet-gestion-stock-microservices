@@ -1,0 +1,30 @@
+# Placeholder shared config served by Config Server (native profile)
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+  batch:
+    job:
+      enabled: true
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+    instances:
+      defaultCircuit:
+        baseConfig: default
+  retry:
+    instances:
+      defaultRetry:
+        maxAttempts: 3
+        waitDuration: 500ms
+
+

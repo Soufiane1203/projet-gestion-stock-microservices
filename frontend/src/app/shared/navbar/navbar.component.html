@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <span>Gestion de Stock</span>
+  <span class="spacer"></span>
+  <span *ngIf="authService.isAuthenticated()">
+    <span>Bienvenue, {{ authService.getCurrentUser()?.username }}</span>
+    <button mat-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Déconnexion
+    </button>
+  </span>
+</mat-toolbar>

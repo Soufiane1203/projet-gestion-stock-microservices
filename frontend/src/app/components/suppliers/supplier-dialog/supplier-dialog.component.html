@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>{{ isEdit ? 'Modifier' : 'Ajouter' }} un fournisseur</h2>
+<mat-dialog-content>
+  <form [formGroup]="supplierForm">
+    <mat-form-field class="full-width">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="name" required>
+      <mat-error *ngIf="supplierForm.get('name')?.hasError('required')">
+        Le nom est requis
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Téléphone</mat-label>
+      <input matInput formControlName="phone">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Annuler</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="supplierForm.invalid">
+    {{ isEdit ? 'Modifier' : 'Créer' }}
+  </button>
+</mat-dialog-actions>

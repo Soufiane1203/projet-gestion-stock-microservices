@@ -1,0 +1,18 @@
+<div *ngIf="!authService.isAuthenticated()">
+  <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="authService.isAuthenticated()" class="app-container">
+  <app-navbar></app-navbar>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened class="sidenav">
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <main class="main-content">
+        <router-outlet></router-outlet>
+      </main>
+      <app-footer></app-footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

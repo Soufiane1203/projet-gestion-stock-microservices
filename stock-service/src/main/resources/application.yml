@@ -1,0 +1,58 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: stock-service
+  profiles:
+    active: dev
+  config:
+    import: optional:configserver:http://localhost:8888
+  # Configuration PostgreSQL (compatible DBeaver)
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  batch:
+    jdbc:
+      initialize-schema: always
+      # Force l'initialisation du schema Batch
+      schema: classpath:org/springframework/batch/core/schema-postgresql.sql
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  # Configuration PostgreSQL en production (mêmes paramètres de démo)
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  batch:
+    jdbc:
+      initialize-schema: always
+
+

@@ -1,0 +1,45 @@
+.container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+mat-card {
+  margin-top: 20px;
+}
+
+.readonly-chip {
+  margin-bottom: 10px;
+}
+
+.alert-card {
+  background-color: #ffebee;
+  border-left: 4px solid #f44336;
+  margin-bottom: 20px;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-critical {
+  background-color: #f44336;
+  color: white;
+}
+
+.status-ok {
+  background-color: #4caf50;
+  color: white;
+}

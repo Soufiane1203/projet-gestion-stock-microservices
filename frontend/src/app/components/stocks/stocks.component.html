@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="header">
+    <h1>Gestion des Stocks</h1>
+    <button mat-raised-button color="primary" (click)="openDialog()" *ngIf="isAdmin">
+      <mat-icon>add</mat-icon>
+      Ajouter un stock
+    </button>
+  </div>
+
+  <mat-chip color="primary" selected class="readonly-chip" *ngIf="!isAdmin">
+    Mode lecture seule
+  </mat-chip>
+
+  <mat-card *ngIf="criticalStocks.length > 0" class="alert-card">
+    <mat-card-header>
+      <mat-card-title>⚠️ Alertes Stock Critique</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ criticalStocks.length }} produit(s) avec stock critique</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <table mat-table [dataSource]="stocks" class="full-width-table">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let stock">{{ stock.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="productId">
+        <th mat-header-cell *matHeaderCellDef>Produit</th>
+        <td mat-cell *matCellDef="let stock">{{ getProductName(stock.productId) }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef>Quantité</th>
+        <td mat-cell *matCellDef="let stock">{{ stock.quantity }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="criticalThreshold">
+        <th mat-header-cell *matHeaderCellDef>Seuil Critique</th>
+        <td mat-cell *matCellDef="let stock">{{ stock.criticalThreshold }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Statut</th>
+        <td mat-cell *matCellDef="let stock">
+          <span [class.status-critical]="isCritical(stock)" [class.status-ok]="!isCritical(stock)" class="status-badge">
+            {{ isCritical(stock) ? 'CRITIQUE' : 'OK' }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let stock">
+          <button mat-icon-button color="primary" (click)="openDialog(stock)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteStock(stock.id!)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+</div>

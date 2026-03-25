@@ -1,0 +1,52 @@
+.container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+mat-card {
+  margin-top: 20px;
+}
+
+.readonly-chip {
+  margin-bottom: 10px;
+}
+
+.status-created,
+.status-confirmed,
+.status-cancelled,
+.status-pending_approval {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-created {
+  background-color: #2196f3;
+  color: white;
+}
+
+.status-confirmed {
+  background-color: #4caf50;
+  color: white;
+}
+
+.status-cancelled {
+  background-color: #f44336;
+  color: white;
+}
+
+.status-pending_approval {
+  background-color: #ff9800;
+  color: #212121;
+}

@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="header">
+    <div>
+      <h1>Notifications et Alertes</h1>
+      <span class="access-mode" [ngClass]="isAdmin ? 'admin' : 'readonly'">
+        <mat-icon>{{ isAdmin ? 'admin_panel_settings' : 'visibility' }}</mat-icon>
+        {{ isAdmin ? 'Accès complet' : 'Lecture seule' }}
+      </span>
+    </div>
+    <div class="actions">
+      <button mat-raised-button color="primary" (click)="refreshAlerts()">
+        <mat-icon>refresh</mat-icon>
+        Actualiser
+      </button>
+      <button mat-stroked-button color="warn" *ngIf="isAdmin" [disabled]="isClearing" (click)="clearAlerts()">
+        <mat-icon>delete_outline</mat-icon>
+        Purger
+      </button>
+    </div>
+  </div>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Alertes Stock (Kafka)</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="alerts.length === 0" class="no-alerts">
+        <mat-icon>check_circle</mat-icon>
+        <p>Aucune alerte pour le moment</p>
+      </div>
+      <mat-list *ngIf="alerts.length > 0">
+        <mat-list-item *ngFor="let alert of alerts" class="alert-item">
+          <mat-icon matListItemIcon color="warn">warning</mat-icon>
+          <div matListItemTitle>{{ alert }}</div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="read-only-card" *ngIf="!isAdmin">
+    <mat-card-content>
+      <mat-icon>info</mat-icon>
+      <div>
+        <strong>Mode utilisateur</strong>
+        <p>Vous pouvez consulter les alertes et être notifié mais pas les modifier.</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

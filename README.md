@@ -2,7 +2,9 @@
 
 ## Video de demonstration
 
-[Voir la video J2EE](docs/video/video-j2ee.mp4)
+[![Voir la demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+
+Remplacez `VIDEO_ID` par l'identifiant de votre video YouTube.
 
 Ce dépôt contient un système de gestion de stock et approvisionnement basé sur une architecture microservices, prêt à être importé et exécuté dans IntelliJ IDEA.
 

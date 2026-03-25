@@ -2,7 +2,7 @@
 
 ## Video de demonstration
 
-[![Voir la demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+[![Voir la demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://github.com/Soufiane1203/projet-gestion-stock-microservices/tree/main/docs/video)
 
 Ce dépôt contient un système de gestion de stock et approvisionnement basé sur une architecture microservices, prêt à être importé et exécuté dans IntelliJ IDEA.
 
